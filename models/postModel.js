@@ -1,13 +1,13 @@
-import mongoose, { Schema } from "mongoose";
 const mongoose = require("mongoose");
+const Schema = mongoose.Schema; // Import Schema from mongoose
 
 // Schema
-const postSchema = new mongoose.Schema(
+const postSchema = new Schema(
   {
-    userId: { type: Schema.Types.ObjectId, ref: "Users" },
+    userId: { type: mongoose.Schema.Types.ObjectId, ref: "Users" }, // Corrected
     image: { type: String },
     likes: [{ type: String }],
-    comments: [{ type: Schema.Types.ObjectId, ref: "Comments" }],
+    comments: [{ type: mongoose.Schema.Types.ObjectId, ref: "Comments" }], // Corrected
     title: {
       type: String,
       required: [true, "Please add post title"],
@@ -17,7 +17,7 @@ const postSchema = new mongoose.Schema(
       required: [true, "Please add post description"],
     },
     postedBy: {
-      type: mongoose.Schema.ObjectId,
+      type: Schema.Types.ObjectId, // Corrected
       ref: "User",
       required: true,
     },
