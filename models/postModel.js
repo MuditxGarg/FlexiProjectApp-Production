@@ -3,6 +3,10 @@ const mongoose = require("mongoose");
 // Schema
 const postSchema = new mongoose.Schema(
   {
+    userId: { type: Schema.Types.ObjectId, ref: "Users" },
+    image: { type: String },
+    likes: [{ type: String }],
+    comments: [{ type: Schema.Types.ObjectId, ref: "Comments" }],
     title: {
       type: String,
       required: [true, "Please add post title"],
