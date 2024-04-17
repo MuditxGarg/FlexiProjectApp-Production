@@ -10,7 +10,6 @@ const postSchema = new Schema(
     comments: [{ type: mongoose.Schema.Types.ObjectId, ref: "Comments" }], // Corrected
     title: {
       type: String,
-      required: [true, "Please add post title"],
     },
     description: {
       type: String,
