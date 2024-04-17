@@ -9,7 +9,7 @@ const requireSingIn = jwt({
   algorithms: ["HS256"],
 });
 
-/// register
+// register
 const registerController = async (req, res) => {
   try {
     const { firstName, lastName, email, password, location, profession } = req.body;
@@ -33,7 +33,7 @@ const registerController = async (req, res) => {
     // hashed password
     const hashedPassword = await hashPassword(password);
 
-    // save user
+    //save data in mongo
     const user = await userModel({
       firstName,
       lastName,
@@ -41,6 +41,7 @@ const registerController = async (req, res) => {
       password: hashedPassword,
       location,
       profession,
+      verified: true,
     }).save();
 
     return res.status(201).send({
